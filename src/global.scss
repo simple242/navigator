@@ -1,0 +1,263 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+/* Other libraries */
+@import "~@tomtom-international/web-sdk-maps";
+@import "~material-icons/iconfont/material-icons.scss";
+@import "~assets/styles/toast.css";
+
+/* Custom styles */
+@import "theme/mixins";
+
+:root {
+  --markerSize: 50px;
+  --controlBgColor: #fff;
+  --controlDisabledBgColor: #e3e3e3;
+  --controlSize: 56px;
+  --mainBoxShadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);
+  --darkColor: #1a2e38;
+  --mainBorderRadius: 5px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+
+}
+
+img {
+  @include noDrag;
+  @include textNotSelect;
+}
+
+p-autocomplete.ng-dirty.ng-invalid > .p-autocomplete > .p-inputtext {
+  border-color: #ced4da !important;
+}
+
+p-autocomplete.ng-touched.ng-invalid > .p-autocomplete > .p-inputtext {
+  border-color: #ef3e36 !important;
+}
+
+@mixin invalidInput {
+  border: 1px solid #ef3e36 !important;
+}
+
+input.ng-touched.ng-invalid {
+  @include invalidInput;
+}
+
+p-autocomplete.ng-touched.ng-invalid {
+  & input {
+    @include invalidInput;
+  }
+}
+
+.p-button {
+  width: 100px;
+
+  &:focus {
+    box-shadow: none !important;
+  }
+}
+
+.routeForm__btn {
+  white-space: nowrap;
+
+  & .p-button {
+    width: 150px;
+    height: 40px;
+  }
+}
+
+span.primeAutocomplete {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.primeAutocomplete {
+  & .p-autocomplete-loader {
+    display: none;
+  }
+
+  & .p-autocomplete-panel {
+    width: 100%;
+  }
+
+  &-address {
+    & .p-autocomplete-items {
+      padding-top: 0 !important;
+
+      & span {
+        width: 100%;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        display: inline-block;
+      }
+
+      & li:first-child {
+        display: none;
+      }
+    }
+  }
+}
+
+.mapContainer {
+  @include fullScreen;
+
+  & .map {
+    @include fullScreen;
+
+    &__marker {
+      width: var(--markerSize);
+      height: var(--markerSize);
+      background-size: cover;
+    }
+  }
+}
+
+.textNotSelect {
+  @include textNotSelect;
+}
+
+.noDrag {
+  @include noDrag;
+}
+
+.mat-icon {
+  @include textNotSelect;
+}
+
+a.tomtomAttribution {
+  @include textNotSelect;
+}
+
+.defaultModal {
+  width: 50vw;
+  min-width: 270px;
+  max-width: 500px;
+
+  &__title {
+    text-align: center;
+    margin: 0 auto 20px;
+  }
+
+  & > div {
+    padding: 20px 35px !important;
+    border-radius: var(--mainBorderRadius);
+  }
+
+  & .p-dialog-content {
+    overflow: initial;
+  }
+}
+
+.routeModal {
+  width: 70vw;
+}
+
+.langModal {
+  width: 40vw;
+  max-width: 400px;
+}
+
+.addonIcon {
+  max-width: 50px;
+}
+
+.transportItem {
+  display: flex !important;
+  align-items: center;
+
+  & img {
+    width: 50px;
+  }
+
+  & span {
+    height: 100%;
+    margin-left: 10px;
+  }
+}
+
+.autocompleteHeader {
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 0.5rem;
+
+  &__text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &__icon {
+    margin-left: 10px;
+  }
+
+  &:hover {
+    background: #e9ecef;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  :root {
+    --controlSize: 50px;
+  }
+
+  .p-autocomplete-item {
+    font-size: 15px;
+  }
+
+  .autocompleteHeader {
+    &__text {
+      font-size: 15px;
+    }
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .p-autocomplete-item {
+    font-size: 14px;
+  }
+
+  .autocompleteHeader {
+    &__text {
+      font-size: 14px;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .routeModal {
+    width: 85vw;
+  }
+}

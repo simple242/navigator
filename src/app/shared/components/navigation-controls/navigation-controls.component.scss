@@ -1,0 +1,40 @@
+:host {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 1100;
+  margin-right: 15px;
+  margin-bottom: 35px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  & .control {
+    width: var(--controlSize);
+    height: var(--controlSize);
+    border-radius: 50%;
+    background-color: var(--controlBgColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: var(--mainBoxShadow);
+    margin-bottom: 15px;
+
+    &-disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+
+    & .mat-icon {
+      color: var(--darkColor);
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

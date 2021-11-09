@@ -1,0 +1,18 @@
+<div class="controls" [hidden]="!mapSvc.map">
+  <div class="control" (click)="showRouteModal()" *ngIf="!navigatorSvc.isNavigatorInit">
+    <span class="mat-icon material-icons-outlined">directions</span>
+  </div>
+  <div class="control" (click)="closeFromNavigator()" *ngIf="navigatorSvc.isNavigatorInit">
+    <span class="mat-icon material-icons-outlined">close</span>
+  </div>
+  <div class="control" (click)="showSelectLangModal()">
+    <span class="mat-icon material-icons-outlined">translate</span>
+  </div>
+  <div
+    class="control"
+    [ngClass]="{'control-disabled': mapSvc.isSetCenter$.value}"
+    (click)="changeLookLocationStatus()"
+  >
+    <span class="mat-icon material-icons-outlined">my_location</span>
+  </div>
+</div>

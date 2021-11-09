@@ -1,0 +1,61 @@
+{
+  "root": true,
+  "ignorePatterns": ["projects/**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["tsconfig.json", "e2e/tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@angular-eslint/ng-cli-compat",
+        "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
+        "plugin:@angular-eslint/template/process-inline-templates"
+      ],
+      "rules": {
+        "@angular-eslint/component-class-suffix": [
+          "error",
+          {
+            "suffixes": ["Page", "Component"]
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "app",
+            "style": "kebab-case"
+          }
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "app",
+            "style": "camelCase"
+          }
+        ],
+        "semi": "off",
+        "no-trailing-spaces": "off",
+        "eol-last": "off",
+        "no-underscore-dangle": "off",
+        "curly": "off",
+        "arrow-body-style": "off",
+        "@typescript-eslint/semi": "off",
+        "@typescript-eslint/member-delimiter-style": "off",
+        "@typescript-eslint/member-ordering": "off",
+        "@typescript-eslint/no-empty-interface": "off",
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/naming-convention": "off",
+        "@typescript-eslint/no-inferrable-types": "off",
+        "@typescript-eslint/consistent-type-assertions": "off"
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {}
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+<div
+  class="panel textNotSelect"
+  *ngIf="navigatorSvc.navigatorPanelData$.value?.instruction?.currentStreet
+  || navigatorSvc.navigatorPanelData$.value?.instruction?.nextStreet"
+  [ngClass]="{ resetBorder : navigatorSvc.navigatorPanelData$.value?.maneuver }"
+>
+  <div class="panel__leftBox">
+    <img class="panel__img" src="assets/img/navigator/straight-arrow.png" alt="Next street">
+    <p
+      class="panel__distance"
+      *ngIf="navigatorSvc.navigatorPanelData$.value?.distance"
+    >{{navigatorSvc.navigatorPanelData$.value?.distance | number:'1.0-0'}} {{'PANEL.METERS' | translate}}</p>
+  </div>
+  <div class="panel__rightBox">
+    <p class="panel__street">{{navigatorSvc.navigatorPanelData$.value?.instruction?.currentStreet || 'Unknown'}}</p>
+    <p
+      class="panel__street"
+      *ngIf="navigatorSvc.navigatorPanelData$.value?.instruction?.nextStreet"
+    >
+      <span class="panel__towards">{{'PANEL.TOWARDS' | translate}}</span>
+      <span class="panel__nextStreet">{{navigatorSvc.navigatorPanelData$.value?.instruction?.nextStreet}}</span>
+    </p>
+  </div>
+  <div
+    class="way"
+    *ngIf="navigatorSvc.navigatorPanelData$.value?.maneuver"
+  >
+    <p class="way__text">{{'PANEL.THEN' | translate}}</p>
+    <img
+      *ngIf="navigatorSvc.navigatorPanelData$.value?.maneuver === 'left'"
+      class="way__img"
+      src="assets/img/navigator/left-arrow.png"
+      alt="Turn"
+    >
+    <img
+      *ngIf="navigatorSvc.navigatorPanelData$.value?.maneuver === 'right'"
+      class="way__img"
+      src="assets/img/navigator/right-arrow.png"
+      alt="Turn"
+    >
+    <img
+      *ngIf="navigatorSvc.navigatorPanelData$.value?.maneuver === 'straight'"
+      class="way__img"
+      src="assets/img/navigator/straight-arrow.png"
+      alt="Turn"
+    >
+  </div>
+</div>

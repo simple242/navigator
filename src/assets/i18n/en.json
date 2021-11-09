@@ -1,0 +1,39 @@
+{
+  "ROUTE_OPTIONS": {
+    "TITLE": "Route settings",
+    "BTN": "Let's hit the road",
+    "START": "Start",
+    "END": "End",
+    "TRANSPORT": "Transport",
+    "MY_POSITION": "My location"
+  },
+  "TRANSPORTS": {
+    "CAR": "Car",
+    "BUS": "Bus",
+    "BICYCLE": "Bicycle",
+    "MOTORCYCLE": "Motorcycle",
+    "PEDESTRIAN": "Pedestrian",
+    "TAXI": "Taxi",
+    "TRUCK": "Truck",
+    "VAN": "Van"
+  },
+  "PANEL": {
+    "TOWARDS": "towards",
+    "THEN": "Then",
+    "METERS": "m"
+  },
+  "LANG_OPTIONS": {
+    "TITLE": "Choose language",
+    "BTN": "Select"
+  },
+  "ERRORS": {
+    "GEOLOCATION": {
+      "TITLE": "Geolocation Error!",
+      "TEXT": "Error while getting geolocation. Allow the app to access geolocation and restart the app."
+    },
+    "NETWORK": {
+      "TITLE": "No network connection!",
+      "TEXT": "For the application to work, you must have access to the network. Please turn on the internet and restart the app."
+    }
+  }
+}

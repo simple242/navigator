@@ -1,0 +1,28 @@
+<p-dialog
+  [(visible)]="modalsSvc.isShowSelectLangModal"
+  [modal]="true"
+  [baseZIndex]="10000"
+  [draggable]="false"
+  [resizable]="false"
+  [closeOnEscape]="false"
+  [showHeader]="false"
+  [dismissableMask]="true"
+  [blockScroll]="true"
+  styleClass="defaultModal langModal"
+>
+  <h2 class="defaultModal__title textNotSelect">{{'LANG_OPTIONS.TITLE' | translate}}</h2>
+  <div class="langs">
+    <div class="langs__item" (click)="setCurrentLanguage('ru')" [ngClass]="{'activeItem': currentLang === 'ru'}">
+      <img src="assets/icons/flags/ru.png" alt="Russia">
+      <p>Русский</p>
+    </div>
+    <div class="langs__item" (click)="setCurrentLanguage('uk')" [ngClass]="{'activeItem': currentLang === 'uk'}">
+      <img src="assets/icons/flags/ua.svg" alt="Ukraine">
+      <p>Українська</p>
+    </div>
+    <div class="langs__item" (click)="setCurrentLanguage('en')" [ngClass]="{'activeItem': currentLang === 'en'}">
+      <img src="assets/icons/flags/uk.svg" alt="Greate Britan">
+      <p>English</p>
+    </div>
+  </div>
+</p-dialog>

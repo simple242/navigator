@@ -1,0 +1,165 @@
+:host {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+.panel {
+  width: 96%;
+  margin-left: 2%;
+  position: relative;
+  z-index: 1000;
+  border-radius: 20px;
+  background: #168038;
+  padding: 23px 10px 10px;
+  margin-top: 9px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: #fff;
+
+  &__leftBox {
+    height: 100%;
+    width: 95px;
+    padding-right: 10px;
+  }
+
+  &__rightBox {
+    height: 100%;
+    width: 87%;
+    padding-right: 20px;
+  }
+
+  &__img {
+    width: 21px;
+    height: auto;
+    margin: 0 23px 0 13px;
+  }
+
+  &__distance {
+    font-size: 20px;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  &__street {
+    font-size: 26px;
+    font-weight: bold;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  &__towards {
+    font-size: 18px;
+    font-weight: normal;
+    white-space: nowrap;
+  }
+
+  &__nextStreet {
+    margin-left: 5px;
+  }
+}
+
+.way {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 111px;
+  height: 60px;
+  margin-bottom: -60px;
+  background-color: #0f642d;
+  border-radius: 20px;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__text {
+    margin-right: 10px;
+    font-size: 16px;
+  }
+
+  &__img {
+    height: 21px;
+  }
+}
+
+.resetBorder {
+  border-bottom-left-radius: 0 !important;
+}
+
+@media screen and (max-width: 500px) {
+  .panel {
+    height: 90px;
+
+    &__distance {
+      font-size: 16px;
+    }
+
+    &__street {
+      font-size: 22px;
+    }
+
+    &__towards {
+      font-size: 14px;
+    }
+
+    &__img {
+      width: 18px;
+    }
+  }
+
+  .way {
+    height: 50px;
+    margin-bottom: -50px;
+
+    &__text {
+      font-size: 14px;
+    }
+
+    &__img {
+      height: 18px;
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .panel {
+    height: 80px;
+    padding: 15px 10px 10px;
+
+    &__distance {
+      font-size: 14px;
+    }
+
+    &__street {
+      font-size: 20px;
+    }
+
+    &__towards {
+      font-size: 12px;
+    }
+
+    &__img {
+      width: 17px;
+    }
+  }
+
+  .way {
+    height: 40px;
+    margin-bottom: -40px;
+
+    &__text {
+      font-size: 12px;
+    }
+
+    &__img {
+      height: 17px;
+    }
+  }
+}

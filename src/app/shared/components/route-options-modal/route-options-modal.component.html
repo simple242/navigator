@@ -1,0 +1,113 @@
+<p-dialog
+  [(visible)]="modalsSvc.isShowRouteOptionsModal"
+  [modal]="true"
+  [baseZIndex]="10000"
+  [draggable]="false"
+  [resizable]="false"
+  [closeOnEscape]="false"
+  [showHeader]="false"
+  [dismissableMask]="true"
+  [blockScroll]="true"
+  styleClass="defaultModal routeModal"
+>
+  <h2 class="defaultModal__title textNotSelect">{{'ROUTE_OPTIONS.TITLE' | translate}}</h2>
+  <form
+    class="routeForm"
+    *ngIf="form"
+    [formGroup]="form"
+    (ngSubmit)="submit()"
+  >
+    <div class="swap textNotSelect" (click)="swap()">
+      <span class="material-icons-outlined">import_export</span>
+    </div>
+    <div class="p-inputgroup routeForm__item">
+      <span class="p-inputgroup-addon textNotSelect addonIcon">
+        <span class="material-icons-outlined">circle</span>
+      </span>
+      <p-autoComplete
+        styleClass="primeAutocomplete primeAutocomplete-address"
+        formControlName="start"
+        [suggestions]="startFieldResults"
+        (completeMethod)="searchAddress($event, 'start')"
+        (onSelect)="selectAddress($event, 'start')"
+        scrollHeight="150px"
+        [completeOnFocus]="completeOnFocusStart"
+        [minLength]="0"
+        [delay]="1000"
+        field="fullAddress"
+        placeholder="{{'ROUTE_OPTIONS.START' | translate}}"
+        [disabled]="disabledAutocomplete"
+      >
+        <ng-template pTemplate="header">
+          <div class="autocompleteHeader" (click)="selectCurrentPosition('start')" *ngIf="!myPositionIsSelected?.startField && !myPositionIsSelected?.endField">
+            <span class="autocompleteHeader__text">{{'ROUTE_OPTIONS.MY_POSITION' | translate}}</span>
+            <span class="material-icons-outlined autocompleteHeader__icon">gps_fixed</span>
+          </div>
+        </ng-template>
+      </p-autoComplete>
+      <ng-template let-item pTemplate="item">
+        <span class="addressItem">{{item?.fullAddress}}</span>
+      </ng-template>
+    </div>
+    <div class="p-inputgroup routeForm__item">
+      <span class="p-inputgroup-addon textNotSelect addonIcon">
+        <span class="material-icons-outlined">location_on</span>
+      </span>
+      <p-autoComplete
+        styleClass="primeAutocomplete primeAutocomplete-address"
+        formControlName="end"
+        [suggestions]="endFieldResults"
+        (completeMethod)="searchAddress($event, 'end')"
+        (onSelect)="selectAddress($event, 'end')"
+        scrollHeight="150px"
+        [completeOnFocus]="completeOnFocusEnd"
+        [minLength]="0"
+        [delay]="1000"
+        field="fullAddress"
+        placeholder="{{'ROUTE_OPTIONS.END' | translate}}"
+        [disabled]="disabledAutocomplete"
+      >
+        <ng-template pTemplate="header">
+          <div class="autocompleteHeader" (click)="selectCurrentPosition('end')" *ngIf="!myPositionIsSelected?.startField && !myPositionIsSelected?.endField">
+            <span class="autocompleteHeader__text">{{'ROUTE_OPTIONS.MY_POSITION' | translate}}</span>
+            <span class="material-icons-outlined autocompleteHeader__icon">gps_fixed</span>
+          </div>
+        </ng-template>
+        <ng-template let-item pTemplate="item">
+          <span [hidden]="!item?.fullAddress" class="addressItem">{{item?.fullAddress}}</span>
+        </ng-template>
+      </p-autoComplete>
+    </div>
+    <div class="p-inputgroup routeForm__item">
+      <span class="p-inputgroup-addon textNotSelect addonIcon">
+        <span class="material-icons-outlined">time_to_leave</span>
+      </span>
+      <p-autoComplete
+        styleClass="primeAutocomplete"
+        formControlName="transport"
+        [suggestions]="transports"
+        (completeMethod)="searchTransport($event)"
+        (onSelect)="selectTransport($event)"
+        scrollHeight="150px"
+        [completeOnFocus]="true"
+        [minLength]="0"
+        [delay]="100"
+        field="name"
+        placeholder="{{'ROUTE_OPTIONS.TRANSPORT' | translate}}"
+      >
+        <ng-template let-item pTemplate="item">
+          <span class="transportItem">
+            <img src="assets/icons/transports/{{item?.img}}" alt="{{item?.type}}">
+            <span>{{item?.name}}</span>
+          </span>
+        </ng-template>
+      </p-autoComplete>
+    </div>
+    <p-button
+      type="submit"
+      class="routeForm__btn textNotSelect"
+      label="{{'ROUTE_OPTIONS.BTN' | translate}}"
+      [disabled]="formInvalid"
+    ></p-button>
+  </form>
+</p-dialog>
